@@ -13,15 +13,32 @@ class employee:
     def salary_perday(self):
         pds=self.salary/self.working_days
         print("salary_perday :",pds)
-e1=employee(15000,30,"good","madhu")
-e2=employee(13000,20,"average","shalini")
-e3=employee(100000,25,"good","madhushalini")
+class developer(employee):
+    def __init__(self, salary, working_days, work_status, employee_name,language):
+        super().__init__(salary, working_days, work_status, employee_name)
+        self.language=language
+    def show(self):
+        super().show()
+        print("Language used for code :",self.language)
+    def work(self):
+        print("writes code for company")
+class manager(employee):
+    def show(self):
+        super().show()
+        print("Role : manager")
+    def work(self):
+        print("managing the team")
+e1=developer(15000,30,"good","madhu","python")
+e2=developer(13000,20,"average","shalini","java")
+e3=developer(100000,25,"good","madhushalini","python")
+m1=manager(300000,30,"good","shalini varma")
 e1.show()
+e1.work()
 e2.show()
-e3.show
-e1.salary_perday()
-e2.salary_perday()
-e3.salary_perday()
-
+e2.work()
+e3.show()
+e3.work()
+m1.show()
+m1.work()
 
         
