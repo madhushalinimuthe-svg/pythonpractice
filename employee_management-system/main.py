@@ -1,5 +1,14 @@
 #OPPS
 from abc import ABC, abstractmethod
+class company :
+    def __init__(self,company_name):
+        self.company_name=company_name
+        self.employee=[]
+    def add_employee(self,employee):
+        self.employee.append(employee)
+    def show_employees(self):
+        for emp in self.employee:
+            emp.show()
 class employee(ABC):
     def __init__(self,salary,working_days,work_status,employee_name):
         self.__salary=salary
@@ -43,7 +52,15 @@ e1=developer(15000,30,"good","madhu","python")
 e2=developer(13000,20,"average","shalini","java")
 e3=developer(100000,25,"good","madhushalini","python")
 m1=manager(300000,30,"good","shalini varma")
-print("old salary :",e1.get_salary)
+company1=company("MMS TECHNOLOGIES")
+company1.add_employee(m1)
+company1.add_employee(e1)
+company1.add_employee(e2)
+company1.add_employee(e3)
+print("company : ",company1.company_name)
+print("Total employees :",len(company1.employee))
+company1.show_employees()
+print("old salary :",e1.get_salary())
 e1.set_salary(40000)
 print("updated salary :",e1.get_salary())
 e1.show()
