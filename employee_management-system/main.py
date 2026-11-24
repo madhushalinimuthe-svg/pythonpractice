@@ -32,7 +32,14 @@ class employee(ABC):
         print("work_status :",self.work_status)
         print("employee_name :",self.employee_name)
     def salary_perday(self):
-        return self.__salary/self.working_days
+        try:
+            salary=self.get_salary()
+            result=salary//self.working_days
+            print("salary per day :",result)
+        except ZeroDivisionError as e:
+            print("working days cannot be zero",e)
+        finally:
+            print("salary calculation completed.")
 class developer(employee):
     def __init__(self, salary, working_days, work_status, employee_name,language):
         super().__init__(salary, working_days, work_status, employee_name)
@@ -49,7 +56,7 @@ class manager(employee):
     def work(self):
         print("managing the team")
 e1=developer(15000,30,"good","madhu","python")
-e2=developer(13000,20,"average","shalini","java")
+e2=developer(13000,0,"average","shalini","java")
 e3=developer(100000,25,"good","madhushalini","python")
 m1=manager(300000,30,"good","shalini varma")
 company1=company("MMS TECHNOLOGIES")
@@ -63,14 +70,23 @@ company1.show_employees()
 print("old salary :",e1.get_salary())
 e1.set_salary(40000)
 print("updated salary :",e1.get_salary())
-e1.show()
+print("employee1 :")
 e1.work()
-e2.show()
+print("employee2 :")
 e2.work()
-e3.show()
+print("employee3 :")
 e3.work()
-m1.show()
+print("manager :")
 m1.work()
+print("manager :")
+m1.salary_perday()
+print("employee1 :")
+e1.salary_perday()
+print("employee2 :")
+e2.salary_perday()
+print("employee3 :")
+e3.salary_perday()
+
 
 
         
